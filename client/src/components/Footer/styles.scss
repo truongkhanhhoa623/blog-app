@@ -1,0 +1,9 @@
+.footer{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px 0;
+    &__item{
+        margin: 5px 10px 5px 0px;
+        font-weight: 700;
+    }
+}

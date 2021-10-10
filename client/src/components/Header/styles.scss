@@ -1,0 +1,28 @@
+.header{
+    padding: 20px 0;
+    box-shadow: 0 4px 12px 0 rgba(0,0,0,0.05);
+    &__logo{
+
+    }
+    .navbar{
+        display:flex;
+        justify-content: flex-end;
+        align-items: center;
+        &__search{
+
+        }
+        &__save-lists{
+            margin: 0 20px;
+        }
+        &__notifications{
+            margin: 0 20px;
+        }
+        &__user{
+            height:35px;
+            width:35px;
+            background: black;
+            border-radius: 50%;
+
+        }
+    }
+}
