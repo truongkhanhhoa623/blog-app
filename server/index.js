@@ -6,8 +6,9 @@ const routes = require('./routes')
 const router = express.Router()
 const {connect} = require('./config/db')
 const cors = require('cors')
-const url =  "mongodb+srv://H01263218566:H01263218566@cluster0.h92cq.mongodb.net/clone_medium?retryWrites=true&w=majority";
-// | "mongodb://localhost:27017/medium"
+const url = process.env.MONGO_URL || "mongodb://localhost:27017/medium";
+//   "mongodb+srv://H01263218566:H01263218566@cluster0.h92cq.mongodb.net/clone_medium?retryWrites=true&w=majority"
+// const url =  "mongodb://localhost:27017/medium"
 
 //Pare json
 app.use(express.json());

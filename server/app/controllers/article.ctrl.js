@@ -3,7 +3,8 @@ const Article = require("../models/Article");
 module.exports = {
   //[GET] /article
   getAll: (req, res, next) => {
-    Article.find({})
+    Article.find(req.params.id)
+    .populate("author")
       .then((articles) => {
         res.status(200).send(articles);
       })
@@ -13,13 +14,15 @@ module.exports = {
   },
   //[GET] /articles/:id
   getArticle: (req, res, next) => {
-    Article.findById(req.params.id).then((article) => {
+    Article.findById(req.params.id)
+    .populate("author")
+    .then((article) => {
       res.status(200).send(article);
     });
   },
   //[POST] /article
   createArticle: (req, res, next) => {
-    const article = new Article({title: req.body.title});
+    const article = new Article(req.body);
     article
       .save()
       .then(() => {
