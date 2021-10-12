@@ -13,4 +13,4 @@ export  function Routers() {
                <PrivateRouter exact layout={BlankLayout} component={LoginPage} path="/login" />
         </Switch>
     )
-}
+} 
