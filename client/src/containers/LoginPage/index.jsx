@@ -1,9 +1,17 @@
 import "./styles.scss";
 import FacebookLogin from "react-facebook-login";
+import axios from "axios";
 
 export const LoginPage = () => {
   const responseFacebook = (res) => {
-    console.log(res);
+      console.log(res);
+    axios({
+        method: "POST",
+        url: "http://localhost:5000/api/loginFacebook",
+        data:{accessToken: res.accessToken, userID: res.userID}
+    }).then(res =>{
+        console.log("Login Facebook success", res);
+    })
   };
 
   return (
@@ -14,14 +22,10 @@ export const LoginPage = () => {
             <div className="login-page__logo">MEDIUM</div>
             <h3 className="login-page__title">Sign In</h3>
             <FacebookLogin
-              appId="1541598222864427"
-              autoLoad={true}
-              fields="name,email,picture"
+              appId="3064849950466357"
+              autoLoad={false}
               callback={responseFacebook}
-              cssClass="my-facebook-button-class"
-              icon="fa-facebook"
             />
-            ,
           </div>
         </div>
       </div>

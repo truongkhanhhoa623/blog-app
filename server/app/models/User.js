@@ -6,8 +6,11 @@ const User = new Schema(
   {
     _id: Number,
     fullname: String,
+    photo: String,
+    email: String,
     username: String,
     password: String,
+    facebookId: String,
   },
   {
     _id: false,
