@@ -34,7 +34,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //Authw with facebook [Passport]
-authFacebook();
+// authFacebook();
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
