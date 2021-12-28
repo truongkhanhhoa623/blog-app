@@ -25,7 +25,8 @@ export const Header = () => {
               <div className="navbar__notifications">
                 <IoNotificationsOutline size={24} />
               </div>
-              <div className="navbar__user"></div>
+              {/* <div className="navbar__user"></div> */}
+              <div className="navbar__signin"><a href="">Sign in</a></div>
             </div>
           </div>
         </div>

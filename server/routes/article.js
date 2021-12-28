@@ -1,20 +1,16 @@
 const articleController = require("../app/controllers/article.ctrl");
-
+const auth = require("../middlewares/auth")
 module.exports = (router) => {
   //Get all article
-  router
-  .route("/articles")
-  .get(articleController.getAll);
+  router.get("/articles",articleController.getAll);
 
 // Create an article
   router
   .route("/article")
   .post(articleController.createArticle);
 
-//get an article by Id
-  router
-  .route("/article/:id")
-  .get(articleController.getArticle);
+//get an article by slug
+  router.get("/article/:slug",articleController.getArticle);
 
   //Update an article by id
   router

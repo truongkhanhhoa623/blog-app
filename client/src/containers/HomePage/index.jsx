@@ -1,33 +1,28 @@
 import { useEffect, useState } from "react";
-import articleApi from "../../services/api/articleApi";
-import { Articles, Header} from "../../components";
-import {SiteBar} from "../SiteBar"
-
+import { useDispatch, useSelector } from "react-redux";
+import { Articles, Header } from "../../components";
+import { SiteBar } from "../SiteBar";
+import { getListArticles, selectArticle } from "../../redux/slice/articleSlice";
 export const HomePage = () => {
-  const [articles, setArticles] = useState([]);
+  const dispatch = useDispatch();
+  const {loading, listArticles, error} = useSelector(selectArticle);
+  
   useEffect(() => {
-    async function getArticles() {
-      try {
-        articleApi.getAll()
-        .then((res) => {
-          const data = res.data;
-          setArticles(data);
-          console.log(data)
-        });
-      } catch (error) {}
-    }
-    getArticles();
-  },[]);
+        dispatch(getListArticles())
+  }, []);
   return (
     <div className="home">
       <div className="container">
-          <div className="row">
-              <div className="col lg-8">    <Articles articles={articles} /></div>
-              <div className="col lg-4">
-                  <SiteBar/>
-              </div>
+        {/* {loading? <div>true</div>: <div>false</div>} */}
+        <div className="row">
+          <div className="col lg-8">
+            {" "}
+            <Articles articles={listArticles} />
           </div>
-    
+          <div className="col lg-4">
+            <SiteBar />
+          </div>
+        </div>
       </div>
     </div>
   );

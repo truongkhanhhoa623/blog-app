@@ -4,21 +4,22 @@ module.exports = {
   //[GET] /article
   getAll: (req, res, next) => {
     Article.find(req.params.id)
-    .populate("author")
+      .populate({ path: "author", select: "fullname picture" })
       .then((articles) => {
+        articles = articles.map((article) => article.toObject());
         res.status(200).send(articles);
       })
       .catch((err) => {
         res.status(404).send(err);
       });
   },
-  //[GET] /articles/:id
+  //[GET] /articles/:slug
   getArticle: (req, res, next) => {
-    Article.findById(req.params.id)
-    .populate("author")
-    .then((article) => {
-      res.status(200).send(article);
-    });
+    Article.findOne({ slug: req.params.slug })
+      .populate({ path: "author", select: "fullname picture" })
+      .then((article) => {
+        res.status(200).send(article);
+      });
   },
   //[POST] /article
   createArticle: (req, res, next) => {
@@ -46,7 +47,7 @@ module.exports = {
   deleteArticle: (req, res, next) => {
     Arricle.deleteOne({ _id: req.params.id })
       .then(() => {
-        res.status(200).send({ msg: "Article deleted"});
+        res.status(200).send({ msg: "Article deleted" });
       })
       .catch((err) => {
         res.status(404).send(req.params.id);

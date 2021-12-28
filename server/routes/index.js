@@ -1,9 +1,7 @@
-const user = require('./user')
+const auth = require('./auth')
 const article = require('./article')
-const auth  =require('./auth')
 
 module.exports = (router) => {
-    user(router)
-    article(router)
     auth(router)
+    article(router)
 }

@@ -1,20 +1,17 @@
-.detail-page{
-    &__left{
-
-        position: sticky;
-        top:0;
-
-    }
-    &__center{
-
-    }
-    &__right{
-        overflow: auto;
-        width: 300px;
-        height:100vh;
-        position: fixed;
-        top:0;
-        padding: 20px;
-        background: rgb(241, 241, 241);
-    }
+.detail-page {
+  &__left {
+    position: sticky;
+    top: 50%;
+  }
+  &__center {
+  }
+  &__right {
+    overflow: auto;
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    padding: 20px;
+    background: rgb(241, 241, 241);
+  }
 }

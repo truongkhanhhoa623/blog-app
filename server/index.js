@@ -6,6 +6,7 @@ const router = express.Router();
 const { connect } = require("./config/db");
 const cors = require("cors");
 const session = require("express-session");
+const cookieParser = require('cookie-parser');
 const passport = require("passport");
 const authFacebook = require("./config/authFacebook");
 require("dotenv").config();
@@ -13,8 +14,9 @@ require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 const url = process.env.MONGO_URL || "mongodb://localhost:27017/medium";
 
-app.use(express.static(path.join(__dirname, "build")));
+// app.use(express.static(path.join(__dirname, "build")));
 app.use(cors());
+app.use(cookieParser());
 
 //Pare body
 app.use(express.json());
@@ -28,7 +30,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-
 //config passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -50,10 +51,9 @@ connect(url);
 routes(router);
 app.use("/api", router);
 
-app.use("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
+// app.use("/*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "build", "index.html"));
+// });
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });

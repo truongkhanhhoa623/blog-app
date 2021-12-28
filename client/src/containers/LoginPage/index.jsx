@@ -1,17 +1,19 @@
 import "./styles.scss";
 import FacebookLogin from "react-facebook-login";
 import axios from "axios";
+import apiAuth from "../../services/api/apiAuth";
 
 export const LoginPage = () => {
   const responseFacebook = (res) => {
-      console.log(res);
-    axios({
-        method: "POST",
-        url: "http://localhost:5000/api/loginFacebook",
-        data:{accessToken: res.accessToken, userID: res.userID}
-    }).then(res =>{
+    try {
+        apiAuth.authFacebook(res)
+        .then((res) => {
+        window.location.replace("/");
         console.log("Login Facebook success", res);
-    })
+        });
+    } catch (error) {
+        console.log("error")
+    }
   };
 
   return (
@@ -21,11 +23,12 @@ export const LoginPage = () => {
           <div className="login-page">
             <div className="login-page__logo">MEDIUM</div>
             <h3 className="login-page__title">Sign In</h3>
-            <FacebookLogin
-              appId="3064849950466357"
-              autoLoad={false}
-              callback={responseFacebook}
-            />
+            <FacebookLogin appId="3064849950466357" autoLoad={false} callback={responseFacebook}/>
+            <from>
+                <input type="text" name="email"/>
+                <input type="password" name="password"/>
+                <button type="submit">Log in</button>
+            </from>
           </div>
         </div>
       </div>

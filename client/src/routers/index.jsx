@@ -9,7 +9,7 @@ export  function Routers() {
     return(
         <Switch>
                <PrivateRouter exact layout={MainLayout} component={HomePage} path="/" />
-               <PrivateRouter exact layout={MainLayout} component={DetailPage} path="/detail" />
+               <PrivateRouter exact layout={MainLayout} component={DetailPage} path="/detail/:slug" />
                <PrivateRouter exact layout={BlankLayout} component={LoginPage} path="/login" />
         </Switch>
     )
