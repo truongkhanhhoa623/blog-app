@@ -5,20 +5,17 @@ module.exports = (router) => {
   router.get("/articles",articleController.getAll);
 
 // Create an article
-  router
-  .route("/article")
-  .post(articleController.createArticle);
+  router.post("/article", auth, articleController.createArticle);
 
 //get an article by slug
-  router.get("/article/:slug",articleController.getArticle);
+  router.get("/article/:slug", articleController.getArticle);
+
+//get an article by author
+router.get("/me/article", auth, articleController.getArticleForAuthor); 
 
   //Update an article by id
-  router
-  .route("/article/:id")
-  .put(articleController.updateArticle);
+  router.put("/article/:id",auth, articleController.updateArticle);
 
-  //Dlete an article by id
-  router
-  .route("/article/:id")
-  .delete(articleController.deleteArticle);
+//   Dlete an article by id
+  router.delete("/article/:id",auth, articleController.deleteArticle);
 };

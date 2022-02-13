@@ -1,0 +1,67 @@
+.header {
+  padding: 20px 0;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+  &__logo {
+  }
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    &__search {
+    }
+    &__save-lists {
+      margin: 0 20px;
+    }
+    &__notifications {
+      margin: 0 20px;
+    }
+    &__user {
+      height: 35px;
+      width: 35px;
+      position: relative;
+      display: inline-block;
+      .avatar {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+      .menu-user {
+        display: none;
+        position: absolute;
+        background-color: #b6b6b6;
+        min-width: 160px;
+        right: 5%;
+        .closs--out {
+          position: fixed;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          z-index: 10;
+        }
+        &__feature {
+          background: rgb(219, 218, 218);
+          position: absolute;
+          z-index: 1000;
+          padding: 10px;
+          border-radius: 10px;
+          .closs--btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            cursor: pointer;
+          }
+        }
+      }
+      .menu-user a {
+        color: black;
+        padding: 5px;
+        text-decoration: none;
+        display: block;
+      }
+      .show {
+        display: block;
+      }
+    }
+  }
+}

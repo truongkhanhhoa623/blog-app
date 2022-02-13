@@ -12,8 +12,13 @@ const  Article = new Schema(
             type: Number,
             ref: 'User'
         },
+        comments: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Comment'
+           }],
         content: String,
         slug: { type: String, slug: "title", unique: true },
+        pushlish: Boolean,
     },
     {
         timestamps: true,

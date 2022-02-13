@@ -55,7 +55,7 @@ module.exports = {
   },
   //[GET] /user/:userId
   getProfile: (req, res, next) => {
-    console.log("profile", req.user._id);
+    console.log("profile-BE", req.user._id);
     User.findById(req.user._id).then((user) => {
       res.status(200).send(user);
     });
@@ -63,8 +63,24 @@ module.exports = {
   //[POST] /user
   register: (req, res, next) => {
     const user = new User(req.body);
+    console.log("res");
     user.save().then(() => {
       res.status(200).send({ msg: "Create success user!" });
+    });
+  },
+  login: (req, res, next) => {
+    const { email, password } = req.body;
+    User.findOne({ email: email }).then((user) => {
+      user.comparePassword(password, (match) => {
+        if (!match) {
+          res.send({ msg: "Invalid password" });
+          return;
+        }
+        user.generateAuthToken().then((token) => {
+          res.cookie("auth", token, {expire: 400000 + Date.now(), httpOnly: true });
+          res.send({ user });
+        });
+      });
     });
   },
   logout: (req, res, next) => {

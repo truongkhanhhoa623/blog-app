@@ -21,9 +21,20 @@ module.exports = {
         res.status(200).send(article);
       });
   },
+  //[GET] /articles/:slug
+  getArticleForAuthor: (req, res, next) => {
+    Article.find({ author: req.user._id }).then((article) => {
+      res.status(200).send(article);
+    });
+  },
   //[POST] /article
   createArticle: (req, res, next) => {
-    const article = new Article(req.body);
+    let params = {
+      author: req.user._id,
+      ...req.body.params,
+    };
+    console.log(params);
+    const article = new Article(params);
     article
       .save()
       .then(() => {
@@ -35,22 +46,22 @@ module.exports = {
   },
   //[PUT] /articles/:id
   updateArticle: (req, res, next) => {
-    Article.updateOne({ _id: req.params.id }, req.body)
+    Article.updateOne({ _id: req.params.id }, req.body.params)
       .then(() => {
         res.status(200).send({ msg: "Update success" });
       })
-      .catch((err) => {
-        res.status(404).send({ msg: err });
+      .catch((error) => {
+        res.status(400).send({ msg: error });
       });
   },
   //[DELETE] /articles/:id
   deleteArticle: (req, res, next) => {
-    Arricle.deleteOne({ _id: req.params.id })
+    Article.deleteOne({ _id: req.params.id })
       .then(() => {
         res.status(200).send({ msg: "Article deleted" });
       })
       .catch((err) => {
-        res.status(404).send(req.params.id);
+        res.status(404).send(err);
       });
   },
 };

@@ -11,7 +11,6 @@ export const getApiProfile= createAsyncThunk(
     async () => {
         // const response = await userApi.getAll();
         const response = await apiAuth.getProfile()
-        console.log(response)
         return response.data;
     }
 );
@@ -22,10 +21,10 @@ const userSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getApiProfile.fulfilled, (state, action) => {
-                state.profile = action.payload.data
+                state.profile = action.payload
             });
     },
 })
 
-export const selectUser = (state) => state.user.profile;
+export const selectUser = (state) => state.user;
 export default userSlice.reducer

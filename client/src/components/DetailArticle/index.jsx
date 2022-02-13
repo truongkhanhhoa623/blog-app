@@ -3,9 +3,6 @@ import "./styles.scss";
 import { useEffect, useState} from "react";
 
 export const DetailArticle = ({ article }) => {
-    // console.log("author", article["author"].fullname);
-    // const author = article.author.toObject();
-    // console.log(author)
     if(article.author){
         return (
             <div className="detail-article">

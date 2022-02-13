@@ -3,7 +3,7 @@ const User = require("../app/models/User");
 
 module.exports = (req, res, next) => {
     let token = req.cookies.auth;
-    console.log(token);
+    console.log("BE", token)
     if(token) {
         User.findToken(token, (err, user)=>{
             if(err) throw err;

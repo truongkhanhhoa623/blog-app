@@ -16,7 +16,7 @@ export const Articles = ({ articles }) => {
                       <div className="author__avatar">
                         <img src={article.author.picture} />
                       </div>
-                      <h5>{article.author.fullname}</h5>
+                      <h5>{article.author.fullname}</h5>    
                     </div>
                     <p>{article.createdAt}</p>
                   </div>

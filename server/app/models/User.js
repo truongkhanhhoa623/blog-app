@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const AutoIncrement = require("mongoose-sequence")(mongoose);
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt")
 const User = new Schema(
   {
     _id: Number,
@@ -40,4 +41,18 @@ User.statics.deleteToken = function (token, callback) {
     callback(null, user);
   });
 };
+
+//Hash the password
+User.pre("save", function(next){
+    if(!this.isModified("password")) {
+        return next();
+    }
+    this.password = bcrypt.hashSync(this.password, 10)
+    next()
+} )
+
+//Compare the password
+User.method("comparePassword", function(plaintext, cb) {
+    return cb(bcrypt.compareSync(plaintext, this.password))
+})
 module.exports = mongoose.model("User", User);

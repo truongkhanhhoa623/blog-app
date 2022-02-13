@@ -23,7 +23,6 @@ const articleSlice = createSlice({
       })
       builder.addCase(getListArticles.fulfilled, (state, action) => {
           state.loading = false
-          console.log("action: " ,  action)
           state.listArticles = action.payload
       })
   },

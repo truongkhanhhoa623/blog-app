@@ -18,7 +18,6 @@ export const DetailPage = () => {
     };
     getDetailArticle();
   },[]);
-  console.log(typeof article.author)
   return (
     <div className="detail-page">
       <div className="container">
@@ -33,7 +32,7 @@ export const DetailPage = () => {
               <DetailArticle article={article} />
             </div>
           </div>
-          <div className="col lg-2">
+          {/* <div className="col lg-2">
             <div className="detail-page__right">
               <h1>{slug}</h1>
               <p>
@@ -127,7 +126,7 @@ export const DetailPage = () => {
                 MILF is to
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

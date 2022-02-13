@@ -12,4 +12,5 @@ module.exports = (router) => {
   router.get("/logout", authToken, authController.logout);
   // register new user with email-password
   router.post("/register", authController.register);
+  router.post("/login", authController.login)
 };
