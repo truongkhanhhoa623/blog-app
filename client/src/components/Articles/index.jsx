@@ -9,7 +9,7 @@ export const Articles = ({ articles }) => {
         return (
           <div key={idx} className="article-item">
             <div className="row">
-              <div className="col lg-9">
+              <div className="col lg-12">
                 <div className="article-item__content">
                   <div className="article-item__header">
                     <div className="author">
@@ -36,11 +36,6 @@ export const Articles = ({ articles }) => {
                     {/* <MdBookmarkAdd size={24} /> */}
                     <MdOutlineBookmarkAdd size={24} />
                   </div>
-                </div>
-              </div>
-              <div className="col lg-3">
-                <div className="article-item__thumbnail">
-                  <img src="https://picsum.photos/id/237/200/300" />
                 </div>
               </div>
             </div>

@@ -13,6 +13,6 @@ module.exports = (req, res, next) => {
             next()
         })
     }else{
-        res.send({ msg: "Token not found"})
+        res.status(400).send({ msg: "Token not found"})
     }
 };

@@ -43,7 +43,7 @@ export const StorePage = () => {
                     <p>{article.createdAt}</p>
                     <div className="feature">
                       <Link to={"/me/article/" + article.slug}>Sửa</Link>
-                      <button onClick={handleDelete(article._id)}>Xóa</button>
+                      <button>Xóa</button>
                     </div>
                   </div>
                 );

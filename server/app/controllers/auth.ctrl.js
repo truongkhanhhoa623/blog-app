@@ -55,7 +55,6 @@ module.exports = {
   },
   //[GET] /user/:userId
   getProfile: (req, res, next) => {
-    console.log("profile-BE", req.user._id);
     User.findById(req.user._id).then((user) => {
       res.status(200).send(user);
     });
@@ -69,15 +68,15 @@ module.exports = {
     });
   },
   login: (req, res, next) => {
-    const { email, password } = req.body;
+    const { email, password } = req.body.params;
     User.findOne({ email: email }).then((user) => {
       user.comparePassword(password, (match) => {
         if (!match) {
-          res.send({ msg: "Invalid password" });
+          res.send({ msg: "Invalid password" }); 
           return;
         }
         user.generateAuthToken().then((token) => {
-          res.cookie("auth", token, {expire: 400000 + Date.now(), httpOnly: true });
+          res.cookie("auth", token, {expire: 400000 + Date.now(), httpOnly: true }); 
           res.send({ user });
         });
       });

@@ -1,26 +1,27 @@
 import { Route } from "react-router-dom";
-import { getCookie } from './../util/getCokie';
-
+import { getCookie } from "../util/handleCookie";
 export function PrivateRouter({
   layout: Layout,
   component: Component,
   exact,
   path,
 }) {
-    const token = getCookie("token")
+  const token = getCookie("auth");
+  console.log("token", token);
   return (
     <Route
       exact={exact}
       path={path}
       render={(props) => {
-        if(!token){
-            window.location.replace("/")
+        if (token==null) {
+          window.location.replace("/");
         }
-        return (
+          return (
             <Layout>
-                <Component {...props} />
+              <Component {...props} />
             </Layout>
-        );
+          );
+        
       }}
     />
   );

@@ -1,12 +1,12 @@
 import {
-  IoSearchOutline,
   IoBookmarksOutline,
   IoNotificationsOutline,
+  IoSearchOutline,
 } from "react-icons/io5";
-import { Menu } from "..";
 import { Link } from "react-router-dom";
-
+import { deleteCookie } from "../../util/handleCookie";
 import "./styles.scss";
+
 export const AdminHeader = ({ profile }) => {
   function showMenuUser() {
     document.querySelector(".menu-user").classList.toggle("show");
@@ -22,13 +22,18 @@ export const AdminHeader = ({ profile }) => {
       }
     };
   }
+  const handleLogout = () => {
+    deleteCookie("auth");
+  };
   return (
     <div className="header">
       <div className="container">
         <div className="row">
           <div className="col lg-6">
             <div className="header__logo">
-              <h1><Link to="/">MEDIUM CLONE</Link> </h1>
+              <h1>
+                <Link to="/">MEDIUM CLONE</Link>{" "}
+              </h1>
             </div>
           </div>
           <div className="col lg-6">
@@ -45,18 +50,20 @@ export const AdminHeader = ({ profile }) => {
               <div className="navbar__user">
                 <img
                   className="avatar"
-                  onClick={showMenuUser}
-                  src="https://linkimage.com/media/000/108/large_Adam%20Johansson_x.jpg"
+                  onClick={ showMenuUser }
+                  src={ profile.picture }
                 />
                 <div className="menu-user">
                   <div className="closs closs--out"></div>
                   <div className="menu-user__feature">
                     <div className="closs closs--btn">x</div>
-                    <h4>Truong Khanh Hòa</h4>
-                    <h5>truongkhanhhoa623@gmail.com</h5>
-                    <Link to="/pri/new-article">Viết bài</Link>
+                    <h4>{ profile.fullname }</h4>
+                    <h5>{ profile.email }</h5>
+                    <Link to="/me/new-article">Viết bài</Link>
                     <Link to="/me/store">Bài viết của tôi</Link>
-                    <Link to="/pri/logout">Đăng xuất</Link>
+                    <Link to="/" onClick={handleLogout}>
+                      Đăng xuất
+                    </Link>
                   </div>
                 </div>
               </div>

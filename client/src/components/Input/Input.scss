@@ -1,0 +1,23 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  &__label {
+    color: rgb(31, 30, 30);
+    font-size: 15px;
+    font-weight: 600;
+  }
+  &__item {
+    outline: none;
+    margin-top: 5px;
+    height: 40px;
+    width: 100%;
+    border: solid 1px #d9dbdd;
+    border-radius: 5px;
+    display: block;
+  }
+  &__error {
+    color: red;
+    font-size: 13px;
+    width: 100%;
+  }
+}

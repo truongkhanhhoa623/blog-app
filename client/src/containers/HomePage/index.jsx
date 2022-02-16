@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Articles, Header } from "../../components";
 import { SiteBar } from "../SiteBar";
 import { getListArticles, selectArticle } from "../../redux/slice/articleSlice";
-import { getCookie } from './../../util/getCokie';
+import { getCookie } from '../../util/handleCookie';
 export const HomePage = () => {
   const dispatch = useDispatch();
   const {loading, listArticles, error} = useSelector(selectArticle);
@@ -13,7 +13,7 @@ export const HomePage = () => {
   return (
     <div className="home">
       <div className="container">
-        {loading? <div>true</div>: <div>false</div>}
+        {/* {loading? <div>true</div>: <div>false</div>} */}
         <div className="row">
           <div className="col lg-8">
             <Articles articles={listArticles} />
