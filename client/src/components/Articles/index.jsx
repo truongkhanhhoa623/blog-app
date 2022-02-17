@@ -1,4 +1,5 @@
 import { MdBookmarkAdd, MdOutlineBookmarkAdd } from "react-icons/md";
+import parse from 'html-react-parser';
 import "./styles.scss";
 import { Link } from "react-router-dom";
 
@@ -24,10 +25,7 @@ export const Articles = ({ articles }) => {
                     <div>
                       <h3 className="article-item__title">{article.title}</h3>
                       <p className="article-item__description">
-                        We all have the nasty experience of facing prompts
-                        asking us to accept cookies when we visit some of the
-                        websites. Why are they asking our… accept cookies when
-                        we vi
+                          {parse(article.content.slice(0,200)+" .....")}
                       </p>
                     </div>
                   </Link>

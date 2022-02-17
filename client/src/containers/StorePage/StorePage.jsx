@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import apiArticle from "../../services/api/apiArticle";
-
+import "./StorePage.scss";
 export const StorePage = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
@@ -34,16 +34,21 @@ export const StorePage = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col lg-12">
+          <div className="col lg-10 o-lg-1">
             <div className="table">
               {articles.map((article) => {
                 return (
                   <div className="table__item">
-                    <h2>{article.title}</h2>
-                    <p>{article.createdAt}</p>
-                    <div className="feature">
-                      <Link to={"/me/article/" + article.slug}>Sửa</Link>
-                      <button>Xóa</button>
+                    <div className="item-header">
+                      <h2>{article.title}</h2>
+                      <span>Publish</span>
+                    </div>
+                    <div className="item-footer">
+                      <p>{article.createdAt}</p>
+                      <div className="item-footer__feature">
+                        <Link className="a" to={"/me/article/" + article.slug}>Sửa</Link>
+                        <span>Xóa</span>
+                      </div>
                     </div>
                   </div>
                 );

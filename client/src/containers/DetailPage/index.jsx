@@ -24,7 +24,6 @@ export const DetailPage = () => {
         <div className="row mt-4">
           <div className="col lg-2">
             <div className="detail-page__left">
-              <Reviews />
             </div>
           </div>
           <div className="col lg-8">

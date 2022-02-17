@@ -4,6 +4,7 @@ import { Articles, Header } from "../../components";
 import { SiteBar } from "../SiteBar";
 import { getListArticles, selectArticle } from "../../redux/slice/articleSlice";
 import { getCookie } from '../../util/handleCookie';
+import './HomePage.scss'
 export const HomePage = () => {
   const dispatch = useDispatch();
   const {loading, listArticles, error} = useSelector(selectArticle);

@@ -1,8 +1,10 @@
 @import "../../assets/scss/variable";
 
 .articles{
+    position: relative;
     margin: 40px 0;
     .article-item{
+        box-shadow: 0 4px 12px 0 rgba(0,0,0,0.05);
         margin: 20px 0;
         &__content{
         }
@@ -31,7 +33,8 @@
         }
         &__description{
             margin: 10px 0;
-            color: $color-gray;
+            max-height: 50px;
+            overflow: hidden;
         }
         &__footer{
             display: flex;
@@ -56,4 +59,13 @@
             
         }
     }
+}
+.articles::after{
+    position: absolute;
+    top: 0;
+    right: -5%;
+    content: "";
+    width: 1.5px;
+    height: 100%;
+    background-color: $color-border;
 }

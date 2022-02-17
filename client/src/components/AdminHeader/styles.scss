@@ -1,6 +1,10 @@
+@import "../../assets/scss/variable"; 
 .header {
   padding: 20px 0;
-  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top:0;
+  z-index: 100;
+  background-color: $color-bg;
   &__logo {
   }
   .navbar {
@@ -28,7 +32,7 @@
       .menu-user {
         display: none;
         position: absolute;
-        background-color: #b6b6b6;
+        background-color: #e67f1f;
         min-width: 160px;
         right: 5%;
         .closs--out {
@@ -40,11 +44,12 @@
           z-index: 10;
         }
         &__feature {
-          background: rgb(219, 218, 218);
+          background: $color-gray;
           position: absolute;
           z-index: 1000;
           padding: 10px;
           border-radius: 10px;
+          color: $color-bg;
           .closs--btn {
             position: absolute;
             top: 0;
@@ -54,7 +59,7 @@
         }
       }
       .menu-user a {
-        color: black;
+        color: $color-light;
         padding: 5px;
         text-decoration: none;
         display: block;

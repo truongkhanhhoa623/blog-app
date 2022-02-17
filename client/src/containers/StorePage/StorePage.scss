@@ -1,0 +1,24 @@
+.store{
+    .table{
+        &__item{
+            margin: 10px 0;
+            box-shadow: 0 4px 12px 0 rgba(0,0,0,0.05);
+            line-height: 50px;
+            .item-header, .item-footer{
+                display: flex;
+                justify-content: space-between;
+            }
+            .item-footer{
+                &__feature{
+                    display: flex;
+                    font-weight: 700;
+
+                    span{
+                        margin: 0 10px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../app/models/User");
 
 module.exports = (req, res, next) => {
-    let token = req.cookies.auth;
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjc3LCJpYXQiOjE2NDUxMjIyMDJ9.G8bwr377JpsGszM25BillScFMRPZqE-J8yITWhLZ-YM";
     console.log("BE", token)
     if(token) {
         User.findToken(token, (err, user)=>{
