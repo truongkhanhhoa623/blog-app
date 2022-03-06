@@ -12,7 +12,7 @@ export const Header = () => {
         <div className="row">
           <div className="col lg-6">
             <div className="header__logo">
-              <h1> MEDIUM CLONE</h1>
+              <h1> BLOG APP</h1>
             </div>
           </div>
           <div className="col lg-6">

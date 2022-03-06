@@ -32,7 +32,7 @@ export const AdminHeader = ({ profile }) => {
           <div className="col lg-6">
             <div className="header__logo">
               <h1>
-                <Link to="/">MEDIUM CLONE</Link>{" "}
+                <Link to="/">BLOG APP</Link>{" "}
               </h1>
             </div>
           </div>
